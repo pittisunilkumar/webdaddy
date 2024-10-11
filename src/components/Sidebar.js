@@ -20,8 +20,7 @@ const Sidebar = ({ scrollToPage }) => {
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
       <a href="/team" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'last')}>T</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/services" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'services')}>S</a>
-      <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
+      <a href="/services" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'services')}>S</a>      <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
       <a href="/portfolio" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'portfolio')}>P</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
       <a href="/blog" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'blog')}>B</a>
@@ -32,10 +31,4 @@ const Sidebar = ({ scrollToPage }) => {
 };
 
 export default Sidebar;
-
-
-
-
-
-
 

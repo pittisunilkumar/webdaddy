@@ -33,3 +33,39 @@ code {
 .sidebaricon {
     unicode-bidi: isolate;
 }
+
+
+
+
+
+
+ 
+.blend {
+    mix-blend-mode: difference;
+    color: #e2dcc8;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .blend2 {
+    mix-blend-mode: difference;
+    color: whitesmoke;
+    position: relative;
+    z-index: 2;
+  }
+  
+
+  .animate-line-drop {
+    animation: lineDrop 3s linear infinite;
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .animate-on-scroll.animate {
+    animation: fadeInUp 2s ease-out forwards;
+  }
+  
+  
+

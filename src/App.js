@@ -77,6 +77,26 @@ function App() {
         newPosition = window.innerWidth * 5.1;
         break;
       case 'services':
+        newPosition = maxScroll;
+        console.log('Scrolling to services, newPosition:', newPosition);
+        setTimeout(() => {
+          if (page5Ref.current) {
+            const servicesSection = page5Ref.current.querySelector('#services-section');
+            console.log('Services section found:', servicesSection);
+            if (servicesSection) {
+              const scrollTop = servicesSection.offsetTop - page5Ref.current.offsetTop;
+              console.log('Scrolling to:', scrollTop);
+              page5Ref.current.scrollTop = scrollTop;
+              
+              const rightSideContent = servicesSection.querySelector('.custom-scrollbar');
+              if (rightSideContent) {
+                console.log('Scrolling right side content to top');
+                rightSideContent.scrollTop = 0;
+              }
+            }
+          }
+        }, 500);
+        break;
       case 'portfolio':
       case 'blog':
         newPosition = maxScroll;

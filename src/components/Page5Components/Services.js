@@ -370,7 +370,7 @@ const Services = () => {
 
 
   return (
-    <div className="bg-[#2c2b2b] text-[#e2dcc8] p-4 sm:p-6 md:p-10 font-['Montserrat', sans-serif]" id="services">
+    <div id="services-section" className="bg-[#2c2b2b] text-[#e2dcc8] p-4 sm:p-6 md:p-10 font-['Montserrat', sans-serif]" id="services">
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 10px;

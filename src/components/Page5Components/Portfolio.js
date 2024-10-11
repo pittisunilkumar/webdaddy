@@ -1,27 +1,61 @@
 import React from 'react';
-import img1 from '../../assets/Rectangle 1071 portfolioimgaes1.svg'
-
+import portfolioimgaes1 from "../../assets/lastest_code_pic_2.png";
+import portfolioimgaes2 from "../../assets/portnew_pic.png";
+import portfolioimgaes3 from "../../assets/Rectangle 1069portfolioimgaes3.svg";
+import portfolioimgaes4 from "../../assets/Rectangle 1068portfolioimgaes4.svg";
+import portfolioimgaes5 from "../../assets/Rectangle 1067portfolioimgaes5.svg";
+import portfolioimgaes6 from "../../assets/Rectangle 1076portfolioimgaes6.svg";
+import portfolioimgaes7 from "../../assets/BAVET_WEB_PIC.png";
+import portfolioimgaes8 from "../../assets/sightbox_web_pic.png";
+import portfolioimgaes9 from "../../assets/giganticcandy_web_pic.png";
+import portfolioimgaes10 from "../../assets/mydayaway_web_pic.png";
+import portfolioimgaes11 from "../../assets/archmotorcycle_web_pic.png";
+import arrowimage from "../../assets/Arrow.svg";
 const Portfolio = () => {
   const projects = [
     {
       name: "BAVET",
       description: "Saas Landing Page",
-      imageSrc: img1,
+      imageSrc: portfolioimgaes1,
       altText: "Bavet Project"
     },
     {
       name: "SIGHTBOX",
       description: "Saas Landing Page",
-      imageSrc: img1,
+      imageSrc: portfolioimgaes2,
       altText: "Sightbox Project"
     },
-    // You can add more projects here
+    {
+      name: "BAVET",
+      description: "Saas Landing Page",
+      imageSrc: portfolioimgaes3,
+      altText: "Bavet Project"
+    },
+    {
+      name: "SIGHTBOX",
+      description: "Saas Landing Page",
+      imageSrc: portfolioimgaes4,
+      altText: "Sightbox Project"
+    },
+    {
+      name: "BAVET",
+      description: "Saas Landing Page",
+      imageSrc: portfolioimgaes5,
+      altText: "Bavet Project"
+    },
+    {
+      name: "SIGHTBOX",
+      description: "Saas Landing Page",
+      imageSrc: portfolioimgaes6,
+      altText: "Sightbox Project"
+    },
+    
   ];
 
   return (
     <div id="portfolio-section" className="min-h-screen bg-[#292929] flex flex-col justify-center items-center p-8">
       <div className="container mx-auto px-4 py-8 sm:py-16 max-w-6xl">
-        <h1 className="bg-abusinees fontmycustom text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-16 text-center">
+        <h1 className="fontmycustom text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-16 text-center" style={{ color: '#e3ddc8' }}>
           PORT<span className="text-stroke bg-abusinees fontmycustom">FOLIO</span>
         </h1>
         
