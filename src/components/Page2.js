@@ -31,7 +31,33 @@ const Page2 = () => {
 
   return (
     <div ref={sectionRef} id="page2" className="flex-none w-screen lg:w-[140vw] h-screen bg-[#2b2a2a] relative overflow-hidden lg:-ml-[20vw]">
+      
+      
       <div className="absolute inset-0 overflow-hidden" style={{transform: 'rotate(315deg) scale(2.5)'}}>
+
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[0%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[5%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[10%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[15%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[20%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[25%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[30%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[35%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[40%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[45%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[50%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[55%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[60%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[65%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[70%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[75%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[80%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[85%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[90%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[95%]"></div>
+          <div class="line absolute w-px h-[200%] bg-white/10 -top-1/2 left-[100%]"></div>
+
+          
       </div>
       
       <div className="relative z-10 w-full h-full flex items-center justify-center">

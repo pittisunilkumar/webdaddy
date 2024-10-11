@@ -21,7 +21,7 @@ const ProgressBar = ({ scrollPosition, verticalScrollPosition, maxScroll, page5R
   }, [scrollPosition, verticalScrollPosition, maxScroll, page5Ref]);
 
   return (
-    <div id="progress-bar-container" className="fixed top-0 left-15 h-full w-1 bg-gray-300 z-30 hidden md:block">
+    <div id="progress-bar-container" className="fixed top-0 left-15 h-full w-1 bg-gray-300 z-30 hidden lg:block">
       <div 
         id="progress-bar" 
         className="w-full bg-[#26d4b4] absolute top-0 left-0 transition-height duration-200 ease-out"
