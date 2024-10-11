@@ -1,28 +1,34 @@
 import React, { useEffect, useRef } from 'react';
 
-// import hariimg from "../../assets/hari_image.svg";
-// import COOimg from "../../assets/coo_img.svg";
-// import rohithimg from "../../assets/rohith_img.svg";
-// import girishimg from "../../assets/girish_img.svg";
-// import aliimg from "../../assets/ali_img.svg";
-
+import hariimg from "../../assets/hari_image.svg";
+import COOimg from "../../assets/coo_img.svg";
+import rohithimg from "../../assets/rohith_img.svg";
+import girishimg from "../../assets/girish_img.svg";
+import aliimg from "../../assets/ali_img.svg";
 
 
 const TeamMemberBox = ({ member }) => {
   return (
-    <div className="border border-[#e2dcc8] p-4 flex flex-col items-center text-center h-full overflow-hidden">
-      
-      <img 
-        src={member.img} 
-        alt={`${member.name} image`} 
-        className="w-20 h-20 object-cover mb-2 rounded-full animate-fade-in-down"
-      />
+    <div className="border border-[#e2dcc8] p-10 flex items-center h-full overflow-hidden">
+      {member.img ? (
+        <img 
+          src={member.img} 
+          className="w-20 h-20 object-cover mb-2 rounded-full animate-fade-in-down mr-4" // Added margin-right for spacing
+          alt={`${member.name} image`} 
+        />
+      ) : (
+        <p></p>
+      )}
 
-      <h2 className="text-xl font-semibold animate-fade-in-up">{member.name}</h2>
-      <p className="text-sm animate-fade-in-up animation-delay-300">{member.designation}</p>
+      <div className="flex flex-col text-left">
+        <h2 className="text-xl font-semibold animate-fade-in-up">{member.name}</h2>
+        <p className="text-sm animate-fade-in-up animation-delay-300">{member.designation}</p>
+      </div>
     </div>
+
   );
 };
+
 
 const OurTeam = () => {
   const containerRef = useRef(null);
@@ -55,13 +61,16 @@ const OurTeam = () => {
     };
   }, []);
 
+
+
+
   const teamMembers = [
-    { name: "Hari", designation: "CEO", img: "https://dummyimage.com/90x90" },
-    { name: "Dhanur", designation: "COO", img: "https://dummyimage.com/90x90" },
-    { name: "Rohith", designation: "CTO", img: "https://dummyimage.com/90x90" },
-    { name: "", designation: "", img: "" },
-    { name: "Girish", designation: "Head- Frontend Developer", img: "https://dummyimage.com/90x90" },
-    { name: "Ali", designation: "Head - Digital Marketing", img: "https://dummyimage.com/90x90" },
+    { name: "Hari", designation: "CEO", img: hariimg },
+    { name: "Dhanur", designation: "COO", img: COOimg },
+    { name: "Rohith", designation: "CTO", img: rohithimg },
+    { name: "", designation: "" },
+    { name: "Girish", designation: "Head- Frontend Developer", img: girishimg },
+    { name: "Ali", designation: "Head - Digital Marketing", img: aliimg },
     { name: "Chris White", designation: "HR", img: "https://dummyimage.com/90x90" },
     { name: "Hamsi", designation: "Mascot", img: "https://dummyimage.com/90x90" },
   ];
@@ -74,7 +83,7 @@ const OurTeam = () => {
           <span className="text-stroke bg-abusinees fontmycustom inline-block animate-right-to-left ml-4">TEAM</span>
         </h1>
         
-        <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-center bg-abusinees">
+        <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-5xl mx-auto text-center bg-abusinees">
           You will find some of the brightest minds on the web in our team. Your success defines
           the core of our processes. Every collaboration pins it down and are mission oriented
           and driven.

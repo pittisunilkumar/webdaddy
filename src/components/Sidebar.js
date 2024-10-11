@@ -32,3 +32,10 @@ const Sidebar = ({ scrollToPage }) => {
 };
 
 export default Sidebar;
+
+
+
+
+
+
+

@@ -74,7 +74,7 @@ function App() {
         newPosition = 0;
         break;
       case 'about':
-        newPosition = window.innerWidth * 4;
+        newPosition = window.innerWidth * 5.1;
         break;
       case 'services':
       case 'portfolio':

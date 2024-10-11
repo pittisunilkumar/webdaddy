@@ -66,7 +66,7 @@ const About = () => {
               <h1 className="text-sm sm:text-base md:text-lg font-normal mb-2 lg:mb-4 bg-abusinees animate-element">
                 We dream, think, design, engineer, learn and build like artists. And we are hellbent on creating the best digital experiences in the world for our clients.
               </h1>
-              <p className="hidden lg:block text-[6vw] xl:text-[5rem] text-stroke leading-none fontmycustom bg-abusinees animate-element" >us</p>
+              <p className="hidden lg:block text-[10vw] xl:text-[9rem] text-stroke leading-none fontmycustom bg-abusinees animate-element" >us</p>
             </div>
             
             <div className="flex flex-col justify-start lg:justify-center">

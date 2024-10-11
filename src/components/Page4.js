@@ -2,7 +2,7 @@ import React from 'react';
 
 const Page4 = () => {
   return (
-    <div id="page4" className="flex-none w-screen lg:w-[120vw] h-screen bg-white relative z-10 overflow-visible lg:-ml-[30vw]">
+    <div id="page4" className="flex-none w-screen lg:w-[100vw] h-screen bg-white relative z-10 overflow-visible lg:-ml-[30vw]">
       <div className="ripple-buttons hidden lg:block absolute w-96 h-96 top-1/3 left-[15%] z-0">
         <button></button>
         <button></button>
