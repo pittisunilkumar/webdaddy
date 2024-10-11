@@ -1,13 +1,23 @@
 import React, { useEffect, useRef } from 'react';
 
+// import hariimg from "../../assets/hari_image.svg";
+// import COOimg from "../../assets/coo_img.svg";
+// import rohithimg from "../../assets/rohith_img.svg";
+// import girishimg from "../../assets/girish_img.svg";
+// import aliimg from "../../assets/ali_img.svg";
+
+
+
 const TeamMemberBox = ({ member }) => {
   return (
     <div className="border border-[#e2dcc8] p-4 flex flex-col items-center text-center h-full overflow-hidden">
+      
       <img 
         src={member.img} 
         alt={`${member.name} image`} 
         className="w-20 h-20 object-cover mb-2 rounded-full animate-fade-in-down"
       />
+
       <h2 className="text-xl font-semibold animate-fade-in-up">{member.name}</h2>
       <p className="text-sm animate-fade-in-up animation-delay-300">{member.designation}</p>
     </div>
@@ -49,6 +59,7 @@ const OurTeam = () => {
     { name: "Hari", designation: "CEO", img: "https://dummyimage.com/90x90" },
     { name: "Dhanur", designation: "COO", img: "https://dummyimage.com/90x90" },
     { name: "Rohith", designation: "CTO", img: "https://dummyimage.com/90x90" },
+    { name: "", designation: "", img: "" },
     { name: "Girish", designation: "Head- Frontend Developer", img: "https://dummyimage.com/90x90" },
     { name: "Ali", designation: "Head - Digital Marketing", img: "https://dummyimage.com/90x90" },
     { name: "Chris White", designation: "HR", img: "https://dummyimage.com/90x90" },

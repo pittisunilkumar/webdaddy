@@ -11,7 +11,7 @@ const Sidebar = ({ scrollToPage }) => {
     <div className="sidebar fixed top-0 left-0 h-full bg-[#333333] z-20 flex flex-col items-center py-4 space-y-4 w-15">
       <div className="mb-8 flex flex-col items-center">
         <div className="w-15 h-15 flex items-center justify-center">
-          <img src={logo} alt="W" className="w-full h-full object-contain"/>
+          <img src={logo} alt="W" className="cursor-pointer w-full h-full object-contain" onClick={(e) => handleClick(e, 'home')}/>
         </div>
       </div>
       <a href="/" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'home')}>H</a>

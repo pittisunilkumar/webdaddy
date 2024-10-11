@@ -3,7 +3,9 @@ import React from 'react';
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-[#1a1a1a]">
+
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+
         <header className="mb-20 text-center">
           <h1 className="text-4xl md:text-5xl inline-block">
             <span className="text-stroke bg-abusinees fontmycustom">CONTACT</span>
@@ -67,6 +69,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
+        
       </div>
     </div>
   );
