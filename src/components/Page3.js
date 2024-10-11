@@ -33,14 +33,14 @@ const Page3 = () => {
       className="flex-none w-screen lg:w-[200vw] h-screen bg-[#292929] relative z-10 overflow-hidden flex items-center lg:-ml-[10vw]"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-full h-full rotate-[36deg] scale-[3]" style={{top: '-50%', left: '-50%', width: '200%', height: '200%'}}>
-          {[...Array(7)].map((_, index) => (
+        <div className="absolute w-[300%] h-[300%] top-[-100%] left-[-100%] transform rotate-[36deg]">
+          {[...Array(40)].map((_, index) => (
             <div 
               key={index} 
               className="line2 absolute w-px h-full bg-white/10" 
               style={{
-                left: `${55 + index * 20}%`,
-                top: `${index * -15}%`,
+                left: `${(index / 40) * 100}%`,
+                animationDelay: `${index * 0.1}s`
               }}
             ></div>
           ))}
