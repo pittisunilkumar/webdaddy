@@ -1,39 +1,51 @@
+/* Existing styles */
+/* .vertical-text-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.vertical-text {
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  white-space: nowrap;
+} */
+
+/* New animation styles */
 @keyframes slide-in-left {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-  
-  @keyframes slide-in-bottom {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .slide-in-left {
-    animation: slide-in-left 1s forwards;
+}
+
+.animate-element {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.animate-element.slide-in-left {
+  animation: slide-in-left 1s forwards;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .animate-element {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .slide-in-bottom {
-    animation: slide-in-bottom 1s forwards;
+
+  .animate-element.slide-in-left {
+    animation: none;
   }
-  
-  .vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-  }
-  
-  .vertical-text-container {
-    transform: rotate(180deg);
-  }
+}

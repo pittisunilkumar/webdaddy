@@ -6,6 +6,7 @@ import Lastestproject from './Page5Components/Lastestproject';
 import Portfolio from './Page5Components/Portfolio';
 import Blog from './Page5Components/Blog';
 import Contact from './Page5Components/Contact';
+import Addpage from './Page5Components/Addpage';
 
 const Page5 = forwardRef((props, ref) => {
   return (
@@ -14,6 +15,7 @@ const Page5 = forwardRef((props, ref) => {
         <OurTeam />
         <TransitionSection />
         <Services />
+        <Addpage/>
         <Lastestproject />
         <Portfolio/>
         <Blog />
