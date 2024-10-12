@@ -18,6 +18,8 @@ function App() {
   const [maxScroll, setMaxScroll] = useState(0);
   const [scrollMultiplier, setScrollMultiplier] = useState(1);
   const [isInitialRender, setIsInitialRender] = useState(true);
+  const [isInServicesSection, setIsInServicesSection] = useState(false);
+  const [cursorOverRightSide, setCursorOverRightSide] = useState(false);
 
   useEffect(() => {
     const updateScrollLimits = () => {
@@ -42,6 +44,16 @@ function App() {
     const handleVerticalScroll = () => {
       if (page5Ref.current) {
         setVerticalScrollPosition(page5Ref.current.scrollTop);
+        
+        const servicesSection = page5Ref.current.querySelector('#services-section');
+        if (servicesSection) {
+          const servicesSectionTop = servicesSection.offsetTop - page5Ref.current.offsetTop;
+          const servicesSectionBottom = servicesSectionTop + servicesSection.offsetHeight;
+          setIsInServicesSection(
+            page5Ref.current.scrollTop >= servicesSectionTop &&
+            page5Ref.current.scrollTop < servicesSectionBottom
+          );
+        }
       }
     };
 
@@ -139,16 +151,68 @@ function App() {
   };
 
   useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (page5Ref.current && isInServicesSection) {
+        const servicesSection = page5Ref.current.querySelector('#services-section');
+        if (servicesSection) {
+          const rightSideContent = servicesSection.querySelector('.custom-scrollbar');
+          if (rightSideContent) {
+            const rect = rightSideContent.getBoundingClientRect();
+            setCursorOverRightSide(
+              e.clientX >= rect.left &&
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
+            );
+          }
+        }
+      } else {
+        setCursorOverRightSide(false);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isInServicesSection]);
+
+  useEffect(() => {
     const handleWheel = (e) => {
       e.preventDefault();
       const isLastPage = scrollPosition >= maxScroll - 10;
 
       if (isLastPage && page5Ref.current) {
-        if (e.deltaY !== 0) {
+        const servicesSection = page5Ref.current.querySelector('#services-section');
+        const rightSideContent = servicesSection?.querySelector('.custom-scrollbar');
+
+        if (isInServicesSection && rightSideContent && cursorOverRightSide) {
+          const isScrollingUp = e.deltaY < 0;
+          const isScrollingDown = e.deltaY > 0;
+          const isAtTopOfServices = rightSideContent.scrollTop === 0;
+          const isAtBottomOfServices = rightSideContent.scrollTop + rightSideContent.clientHeight >= rightSideContent.scrollHeight;
+
+          if (isScrollingDown && !isAtBottomOfServices) {
+            // Scrolling down within services
+            rightSideContent.scrollTop += e.deltaY;
+          } else if (isScrollingUp && !isAtTopOfServices) {
+            // Scrolling up within services
+            rightSideContent.scrollTop += e.deltaY;
+          } else if ((isScrollingUp && isAtTopOfServices) || (isScrollingDown && isAtBottomOfServices)) {
+            // Allow Page5 to scroll when at the edges of services
+            const newScrollTop = page5Ref.current.scrollTop + e.deltaY;
+            if (newScrollTop >= 0 && newScrollTop <= page5Ref.current.scrollHeight - page5Ref.current.clientHeight) {
+              page5Ref.current.scrollTop = newScrollTop;
+            }
+          }
+        } else {
+          // Normal vertical scrolling in Page5
           const newScrollTop = page5Ref.current.scrollTop + e.deltaY;
           if (newScrollTop <= 0 && e.deltaY < 0) {
+            // At the top of Page5 and trying to scroll up further
             smoothScroll(-100);
-          } else {
+          } else if (newScrollTop >= 0 && newScrollTop <= page5Ref.current.scrollHeight - page5Ref.current.clientHeight) {
             page5Ref.current.scrollTop = newScrollTop;
           }
         }
@@ -162,7 +226,7 @@ function App() {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [scrollPosition, maxScroll, scrollMultiplier]);
+  }, [scrollPosition, maxScroll, scrollMultiplier, isInServicesSection, cursorOverRightSide]);
 
   return (
     <Router>
@@ -191,6 +255,8 @@ function App() {
       </div>
     </Router>
   );
+
+  
 }
 
 export default App;

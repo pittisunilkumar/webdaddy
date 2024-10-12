@@ -1,14 +1,37 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const Services = () => {
+const Services = React.forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeService, setActiveService] = useState(null);
   const [visibleSection, setVisibleSection] = useState(0);
   const rightSideRef = useRef(null);
   const serviceSectionRefs = useRef([]);
+  const headingRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (headingRef.current) {
+        const rect = headingRef.current.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+        if (isVisible) {
+          headingRef.current.classList.add('animate-slide-in-left');
+        } else {
+          headingRef.current.classList.remove('animate-slide-in-left');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check on mount
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleRightSideScroll = () => {
       if (!rightSideRef.current) return;
       
       const scrollPosition = rightSideRef.current.scrollTop;
@@ -23,12 +46,12 @@ const Services = () => {
 
     const rightSide = rightSideRef.current;
     if (rightSide) {
-      rightSide.addEventListener('scroll', handleScroll);
+      rightSide.addEventListener('scroll', handleRightSideScroll);
     }
 
     return () => {
       if (rightSide) {
-        rightSide.removeEventListener('scroll', handleScroll);
+        rightSide.removeEventListener('scroll', handleRightSideScroll);
       }
     };
   }, []);
@@ -48,6 +71,7 @@ const Services = () => {
     }
   };
 
+ 
   const services = [
     {
       title: "Website Design",
@@ -369,9 +393,34 @@ const Services = () => {
   ];
 
 
+
   return (
-    <div id="services-section" className="bg-[#2c2b2b] text-[#e2dcc8] p-4 sm:p-6 md:p-10 font-['Montserrat', sans-serif]" id="services">
+    <div ref={ref} id="services-section" className="bg-[#2c2b2b] text-[#e2dcc8] p-4 sm:p-6 md:p-10 font-['Montserrat',_sans-serif] h-[150vh] overflow-hidden relative">
       <style jsx>{`
+        @keyframes slide-in-left {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .animate-slide-in-left {
+          animation: slide-in-left 1.5s forwards;
+        }
+        @keyframes zoom-in {
+          from {
+            transform: scale(1);
+          }
+          to {
+            transform: scale(1.1);
+          }
+        }
+        .animate-zoom-in {
+          animation: zoom-in 0.3s forwards;
+        }
         .custom-scrollbar::-webkit-scrollbar {
           width: 10px;
         }
@@ -385,37 +434,44 @@ const Services = () => {
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #c5b99d;
         }
+        .service-title::before {
+          content: attr(data-number);
+          display: inline-block;
+          margin-right: 10px;
+          color: transparent;
+          -webkit-text-stroke: 1px #e2dcc8;
+        }
       `}</style>
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl mb-8 md:mb-16 text-center font-bold">SERVICES</h1>
+      <h1 ref={headingRef} className="text-[8vw] font-bold text-center mb-10">SERVICES</h1>
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/3 md:sticky md:top-10 self-start pl-2 sm:pl-4 md:pl-[68px] pt-4 md:pt-[100px] h-auto md:h-[calc(100vh-200px)] mb-8 md:mb-0 overflow-y-auto md:overflow-y-visible">
+        <div className="md:w-1/3 md:sticky md:top-10 self-start pl-2 sm:pl-4 md:pl-[75px] pt-4 md:pt-[100px] h-auto md:h-[calc(100vh-140px)] mb-8 md:mb-0 overflow-y-auto md:overflow-y-visible">
           {services.map((service, index) => (
             <h2
               key={index}
               onClick={() => handleServiceClick(index)}
-              className={`text-xl sm:text-2xl mb-6 md:mb-20 cursor-pointer transition-all duration-300 hover:text-[#e2dcc8] hover:scale-105 ${
-                activeService === index ? 'text-2xl sm:text-3xl font-bold text-[#e2dcc8]' : ''
-              } ${visibleSection === index ? 'visible' : ''}`}
+              className={`service-title text-xl md:text-[2vw] mb-6 md:mb-20 cursor-pointer transition-all duration-300 hover:text-[#e2dcc8] hover:scale-105 
+                ${activeService === index ? 'md:text-[3vw] font-bold' : ''}
+                ${visibleSection === index ? 'animate-zoom-in' : ''}`}
               data-number={`0${index + 1}/`}
             >
               {service.title}
             </h2>
           ))}
         </div>
-        <div className="md:w-2/3 h-[calc(100vh-200px)] overflow-y-auto pr-2 sm:pr-4 md:pr-10 pl-2 sm:pl-4 md:pl-8 custom-scrollbar" ref={rightSideRef}>
+        <div className="md:w-2/3 h-[calc(150vh-275px)] overflow-y-auto pr-2 sm:pr-4 md:pr-10 pl-2 sm:pl-4 md:pl-8 custom-scrollbar" ref={rightSideRef}>
           {services.map((service, serviceIndex) => (
             <div
               key={serviceIndex}
               className="mb-16 md:mb-32"
               ref={(el) => (serviceSectionRefs.current[serviceIndex] = el)}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
+              <h2 className="text-3xl md:text-[4vw] font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
                 {service.title.split(' ')[0]}
               </h2>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
+              <h2 className="text-3xl md:text-[4vw] font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
                 {service.title.split(' ').slice(1).join(' ')}
               </h2>
-              <div className="mb-6 md:mb-8 text-base sm:text-lg">
+              <div className="mb-6 md:mb-8 text-base md:text-[1.5vw]">
                 {Array.isArray(service.description) ? (
                   <ul className="list-square list-inside space-y-2">
                     {service.description.map((desc, index) => (
@@ -436,8 +492,8 @@ const Services = () => {
                       }`}
                       onClick={() => handleAccordionToggle(`${serviceIndex}-${item.id}`)}
                     >
-                      <span className="text-lg sm:text-xl font-semibold flex items-center">
-                        <span className="mr-2 sm:mr-4 text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
+                      <span className="text-lg md:text-[1.5vw] font-semibold flex items-center">
+                        <span className="mr-2 sm:mr-4 text-xl md:text-[4vw] text-transparent bg-clip-text bg-gradient-to-r from-[#e2dcc8] to-[#e2dcc8]">
                           {item.id < 10 ? `0${item.id}` : item.id}
                         </span>
                         {item.title}
@@ -450,7 +506,7 @@ const Services = () => {
                     </button>
                     {activeIndex === `${serviceIndex}-${item.id}` && (
                       <div className="p-3 sm:p-4 bg-[#3a3a3a]">
-                        <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                        <ul className="list-disc list-inside space-y-2 text-sm md:text-[1.5vw]">
                           {item.content.map((point, pointIndex) => (
                             <li key={pointIndex}>{point}</li>
                           ))}
@@ -466,6 +522,6 @@ const Services = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Services;
