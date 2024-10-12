@@ -153,3 +153,215 @@ code {
       height: 10vh;
     }
   }
+
+  .bg-businees{
+    color: #e2dcc8;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Update these styles in your existing CSS file */
+
+.portfoliopage-project-container {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.portfoliopage-project-container.animate-project {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfoliopage-project-image-container {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.portfoliopage-project-text-container {
+  transform: translateX(50px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.portfoliopage-project-container.animate-project
+  .portfoliopage-project-image-container,
+.portfoliopage-project-container.animate-project
+  .portfoliopage-project-text-container {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px #e2dcc8;
+}
+
+/* Heading animation styles */
+.animate-left {
+  animation: slide-in-left 1s forwards;
+}
+
+.animate-right {
+  animation: slide-in-right 1s forwards;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .portfoliopage-project-container {
+    flex-direction: column;
+  }
+
+  .portfoliopage-project-text-container h2 {
+    font-size: 2rem;
+  }
+
+  .portfoliopage-project-text-container p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1400px) {
+  .portfoliopage-project-text-container h2 {
+    font-size: 2.5vw;
+  }
+
+  .portfoliopage-project-text-container p {
+    font-size: 1.2vw;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px #e2dcc8;
+  }
+
+  .text-fill {
+    -webkit-text-stroke: 0;
+  }
+
+  .animate-slide-left {
+    animation: slide-left 1s forwards;
+  }
+
+  .animate-slide-right {
+    animation: slide-right 1s forwards;
+  }
+
+  .animate-project {
+    animation: fade-in-up 0.5s forwards;
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+
+

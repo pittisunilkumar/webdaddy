@@ -1,24 +1,47 @@
-/* Existing styles */
-/* .vertical-text-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
 }
 
-.vertical-text {
-  transform: rotate(-90deg);
-  transform-origin: left bottom;
-  position: absolute;
-  bottom: 50%;
-  left: 0;
-  white-space: nowrap;
-} */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-/* New animation styles */
-@keyframes slide-in-left {
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-element.slide-in-left {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+@keyframes continuousSlide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
   from {
     transform: translateX(-100%);
     opacity: 0;
@@ -29,23 +52,19 @@
   }
 }
 
-.animate-element {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
-.animate-element.slide-in-left {
-  animation: slide-in-left 1s forwards;
-}
-
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .animate-element {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
-    transform: translateX(0);
   }
+}
 
-  .animate-element.slide-in-left {
-    animation: none;
-  }
+.animate-slide-in {
+  animation: slideIn 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
 }

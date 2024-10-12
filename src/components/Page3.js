@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import car from '../assets/formulasCarimg.svg';
+import { color } from 'framer-motion';
 
 const Page3 = () => {
   const pageRef = useRef(null);

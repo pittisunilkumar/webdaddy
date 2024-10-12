@@ -14,18 +14,18 @@ const Sidebar = ({ scrollToPage }) => {
           <img src={logo} alt="W" className="cursor-pointer w-full h-full object-contain" onClick={(e) => handleClick(e, 'home')}/>
         </div>
       </div>
-      <a href="/" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'home')}>H</a>
+      <a href="/" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'home')}>H</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/about" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'about')}>A</a>
+      <a href="/about" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'about')}>A</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/team" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'last')}>T</a>
+      <a href="/team" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'last')}>T</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/services" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'services')}>S</a>      <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/portfolio" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'portfolio')}>P</a>
+      <a href="/services" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'services')}>S</a>      <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
+      <a href="/portfolio" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'portfolio')}>P</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/blog" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'blog')}>B</a>
+      <a href="/blog" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'blog')}>B</a>
       <div className="w-1.5 h-1.5 bg-[#26d4b4] rounded-full"></div>
-      <a href="/contact" className="text-white hover:text-gray-300 sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'last-vertical')}>C</a>
+      <a href="/contact" className="text-[#e3ddc8] hover:text-[#26d4b4] sidebaricon fontmycustom" onClick={(e) => handleClick(e, 'last-vertical')}>C</a>
     </div>
   );
 };

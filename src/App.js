@@ -166,7 +166,7 @@ function App() {
 
   return (
     <Router>
-      <div className="font-sans overflow-hidden flex h-full bg-[#f7f7f7] text-white">
+      <div className="font-sans overflow-hidden flex h-full bg-[#f7f7f7]">
         <Sidebar scrollToPage={scrollToPage} />
         <ProgressBar 
           scrollPosition={scrollPosition} 

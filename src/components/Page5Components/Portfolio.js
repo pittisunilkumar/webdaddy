@@ -1,78 +1,125 @@
-import React from 'react';
-import portfolioimgaes1 from "../../assets/lastest_code_pic_2.png";
-import portfolioimgaes2 from "../../assets/portnew_pic.png";
-import portfolioimgaes3 from "../../assets/Rectangle 1069portfolioimgaes3.svg";
-import portfolioimgaes4 from "../../assets/Rectangle 1068portfolioimgaes4.svg";
-import portfolioimgaes5 from "../../assets/Rectangle 1067portfolioimgaes5.svg";
-import portfolioimgaes6 from "../../assets/Rectangle 1076portfolioimgaes6.svg";
+import React, { useRef, useEffect } from 'react';
 import portfolioimgaes7 from "../../assets/BAVET_WEB_PIC.png";
 import portfolioimgaes8 from "../../assets/sightbox_web_pic.png";
 import portfolioimgaes9 from "../../assets/giganticcandy_web_pic.png";
 import portfolioimgaes10 from "../../assets/mydayaway_web_pic.png";
 import portfolioimgaes11 from "../../assets/archmotorcycle_web_pic.png";
 import arrowimage from "../../assets/Arrow.svg";
+
 const Portfolio = () => {
+  const projectRefs = useRef([]);
+  const headingRef = useRef(null);
+  const strokeRef = useRef(null);
+
+  useEffect(() => {
+    const projectObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-project");
+          } else {
+            entry.target.classList.remove("animate-project");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    projectRefs.current.forEach((ref) => {
+      if (ref) {
+        projectObserver.observe(ref);
+      }
+    });
+
+    const headingObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          headingRef.current.classList.add("animate-left");
+          strokeRef.current.classList.add("animate-right");
+        } else {
+          headingRef.current.classList.remove("animate-left");
+          strokeRef.current.classList.remove("animate-right");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (headingRef.current && strokeRef.current) {
+      headingObserver.observe(headingRef.current);
+      headingObserver.observe(strokeRef.current);
+    }
+
+    return () => {
+      projectRefs.current.forEach((ref) => {
+        if (ref) projectObserver.unobserve(ref);
+      });
+      if (headingRef.current) headingObserver.unobserve(headingRef.current);
+      if (strokeRef.current) headingObserver.unobserve(strokeRef.current);
+    };
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !projectRefs.current.includes(el)) {
+      projectRefs.current.push(el);
+    }
+  };
+
   const projects = [
     {
       name: "BAVET",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes1,
-      altText: "Bavet Project"
+      description: "Restaurant Business",
+      imageSrc: portfolioimgaes7,
+      url: "https://bavet.eu/"
     },
     {
       name: "SIGHTBOX",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes2,
-      altText: "Sightbox Project"
+      description: "Branding Agency",
+      imageSrc: portfolioimgaes8,
+      url: "https://sightbox.co/"
     },
     {
-      name: "BAVET",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes3,
-      altText: "Bavet Project"
+      name: "GIGANTIC CANDY",
+      description: "Ecommerce",
+      imageSrc: portfolioimgaes9,
+      url: "https://giganticcandy.com/"
     },
     {
-      name: "SIGHTBOX",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes4,
-      altText: "Sightbox Project"
+      name: "DAYAWAY",
+      description: "Travel Membership",
+      imageSrc: portfolioimgaes10,
+      url: "https://www.mydayaway.com/"
     },
     {
-      name: "BAVET",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes5,
-      altText: "Bavet Project"
-    },
-    {
-      name: "SIGHTBOX",
-      description: "Saas Landing Page",
-      imageSrc: portfolioimgaes6,
-      altText: "Sightbox Project"
-    },
-    
+      name: "ARCH - Motorcycle",
+      description: "Automobile",
+      imageSrc: portfolioimgaes11,
+      url: "https://archmotorcycle.com/"
+    }
   ];
 
   return (
-    <div id="portfolio-section" className="min-h-screen bg-[#292929] flex flex-col justify-center items-center p-8">
-      <div className="container mx-auto px-4 py-8 sm:py-16 max-w-6xl">
-        <h1 className="fontmycustom text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-16 text-center" style={{ color: '#e3ddc8' }}>
-          PORT<span className="text-stroke bg-abusinees fontmycustom">FOLIO</span>
+    <div id="portfolio-section" className="min-h-screen bg-[#282828] flex flex-col justify-center items-center p-8">
+      <div className="container mx-auto px-4 py-8 sm:py-16 max-w-7xl">
+        <h1 className="fontmycustom text-4xl sm:text-6xl lg:text-9xl mb-8 sm:mb-16 text-center text-[#e2dcc8] flex justify-center items-center">
+          <span ref={headingRef} className="inline-block">PORT</span>
+          <span ref={strokeRef} className="inline-block text-stroke">FOLIO</span>
         </h1>
         
-        <div className="space-y-16 sm:space-y-24">
+        <div className="space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center justify-center gap-8`}>
-              <div className="w-full md:w-1/2 text-center md:text-left">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4">{project.name}</h2>
-                <p className="text-lg sm:text-xl mb-4">{project.description}</p>
-                <a href="#" className="inline-block border border-white rounded-full p-2 hover:bg-white hover:text-gray-900 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
+            <div 
+              key={index} 
+              ref={addToRefs}
+              className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 portfoliopage-project-container ${index % 2 === 0 ? 'portfoliopage-project-container-one' : 'portfoliopage-project-container-two'}`}
+              onClick={() => window.open(project.url, "_blank")}
+            >
+              <div className={`w-full md:w-1/2 portfoliopage-project-text-container text-[#e2dcc8] flex flex-col ${index % 2 === 0 ? 'items-start md:order-1' : 'items-end md:order-2'}`}>
+                <h2 className="text-4xl font-bold mb-4">{project.name}</h2>
+                <p className="text-xl mb-4">{project.description}</p>
+                <img src={arrowimage} alt="arrow" className={`w-8 h-8 ${index % 2 !== 0 ? 'transform rotate-180' : ''}`} />
               </div>
-              <div className="w-full md:w-1/2">
-                <img src={project.imageSrc} alt={project.altText} className="w-full rounded-lg shadow-lg"/>
+              <div className={`w-full md:w-1/2 portfoliopage-project-image-container ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                <img src={project.imageSrc} alt={project.name} className="w-full rounded-lg shadow-lg"/>
               </div>
             </div>
           ))}
