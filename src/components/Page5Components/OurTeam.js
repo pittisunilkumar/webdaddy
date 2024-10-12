@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 
-import hariimg from "../../assets/hari_image.svg";
+import hariimg from "../../assets/hari_image-cropped.svg";
 import COOimg from "../../assets/coo_img.svg";
-import rohithimg from "../../assets/rohith_img.svg";
-import girishimg from "../../assets/girish_img.svg";
-import aliimg from "../../assets/ali_img.svg";
+import rohithimg from "../../assets/rohith_img-cropped.svg";
+import girishimg from "../../assets/girish_img-cropped.svg";
+import aliimg from "../../assets/ali_img-cropped.svg";
 
 
 const TeamMemberBox = ({ member }) => {
   return (
+    
     <div className="border border-[#e2dcc8] p-10 flex items-center h-full overflow-hidden">
       {member.img ? (
         <img 
@@ -20,11 +21,13 @@ const TeamMemberBox = ({ member }) => {
         <p></p>
       )}
 
-      <div className="flex flex-col text-left">
-        <h2 className="text-xl font-semibold animate-fade-in-up">{member.name}</h2>
+      <div className="flex flex-col text-center">
+        <h2 className="text-xl font-semibold animate-fade-in-up p-1">{member.name}</h2>
         <p className="text-sm animate-fade-in-up animation-delay-300">{member.designation}</p>
       </div>
     </div>
+
+    
 
   );
 };

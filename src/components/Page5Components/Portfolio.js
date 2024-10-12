@@ -102,7 +102,7 @@ const Portfolio = () => {
       <div className="container mx-auto px-4 py-8 sm:py-16 max-w-7xl">
         <h1 className="fontmycustom text-4xl sm:text-6xl lg:text-9xl mb-8 sm:mb-16 text-center text-[#e2dcc8] flex justify-center items-center">
           <span ref={headingRef} className="inline-block">PORT</span>
-          <span ref={strokeRef} className="inline-block text-stroke">FOLIO</span>
+          <span ref={strokeRef} className="inline-block bg-businees text-stroke">FOLIO</span>
         </h1>
         
         <div className="space-y-24">

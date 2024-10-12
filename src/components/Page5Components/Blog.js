@@ -104,7 +104,7 @@ const Blog = () => {
     <div id="blog-section" className="blogpage-container min-h-screen flex flex-col justify-center items-center p-8 bg-[#1c1c1c]">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
       <header ref={headerRef} className={`blogpage-heading mb-20 text-center ${isHeaderVisible ? 'in-view' : ''}`}>
-        <h1 className="text-7xl md:text-5xl bg-abusinees fontmycustom inline-block text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-16 text-center">
+        <h1 className="text-7xl md:text-5xl bg-abusinees fontmycustom inline-block text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-8 text-center">
           <span 
             className="fontmycustom heading-left" 
             style={{ color: '#e3ddc8' }} // Set your desired color here
