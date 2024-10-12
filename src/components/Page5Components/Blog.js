@@ -2,6 +2,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import img1 from '../../assets/Rectangle 1071 portfolioimgaes1.svg';
 import '../../styles/Blog.css';
 
+
+import BLOG from "../../assets/Rectangle 1084BLOGBAR.svg";
+import BLOG1 from "../../assets/Rectangle 1070BLOG1.svg";
+import BLOG2 from "../../assets/Rectangle 1070BLOG2.svg";
+import BLOG3 from "../../assets/Rectangle 1070BLOG3.svg";
+import BLOG4 from "../../assets/Rectangle 1070BLOG4.svg";
+import BLOG5 from "../../assets/Rectangle 1070BLOG5.svg";
+import BLOG6 from "../../assets/Rectangle 1070BLOG6.svg";
+
 const BlogPost = ({ number, date, content, imagePosition, image }) => {
   const [isVisible, setIsVisible] = useState(false);
   const postRef = useRef(null);
@@ -83,25 +92,30 @@ const Blog = () => {
   }, []);
 
   const blogPosts = [
-    { number: '01', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: img1 },
-    { number: '02', date: 'DECEMBER 27, 2022', content: 'is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: img1 },
-    { number: '03', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: img1 },
-    { number: '04', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: img1 },
-    { number: '05', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: img1 },
-    { number: '06', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: img1 },
-    { number: '07', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: img1 },
-    { number: '08', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: img1 },
-  ];
+    { number: '01', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: BLOG1 },
+    { number: '02', date: 'DECEMBER 27, 2022', content: 'is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: BLOG2 },
+    { number: '03', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: BLOG3 },
+    { number: '04', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: BLOG4 },
+    { number: '05', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'left', image: BLOG5 },
+    { number: '06', date: 'DECEMBER 27, 2022', content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry...', imagePosition: 'right', image: BLOG6 },
+    ];
 
   return (
     <div id="blog-section" className="blogpage-container min-h-screen flex flex-col justify-center items-center p-8 bg-[#1c1c1c]">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <header ref={headerRef} className={`blogpage-heading mb-20 text-center ${isHeaderVisible ? 'in-view' : ''}`}>
-          <h1 className="text-4xl md:text-5xl inline-block">
-            <span className="bg-abusinees fontmycustom heading-left">BLOG</span>
-            <span className="bg-abusinees fontmycustom text-stroke heading-right">YARD</span>
-          </h1>
-        </header>
+      <header ref={headerRef} className={`blogpage-heading mb-20 text-center ${isHeaderVisible ? 'in-view' : ''}`}>
+        <h1 className="text-7xl md:text-5xl bg-abusinees fontmycustom inline-block text-4xl sm:text-6xl lg:text-8xl mb-8 sm:mb-8 text-center">
+          <span 
+            className="fontmycustom heading-left" 
+            style={{ color: '#e3ddc8' }} // Set your desired color here
+          >
+            BLOG
+          </span>
+          <span className="bg-abusinees fontmycustom text-stroke heading-right">YARD</span>
+            
+        </h1>
+      </header>
+
 
         <main className="space-y-8">
           {blogPosts.map((post, index) => (

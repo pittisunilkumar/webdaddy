@@ -3,11 +3,13 @@ import React from 'react';
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-[#1a1a1a]">
+
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+
         <header className="mb-20 text-center">
-          <h1 className="text-4xl md:text-5xl inline-block">
-            <span className="text-stroke bg-abusinees fontmycustom">CONTACT</span>
-            <span className="text-stroke bg-abusinees fontmycustom">US</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl inline-block">
+            <span className="blend fontmycustom mr-2">CONTACT</span>
+            <span className="blend fontmycustom ml-2">US</span>
           </h1>
         </header>
 
@@ -16,7 +18,7 @@ const Contact = () => {
             <div className="p-4 bg-gray-800">
               <h2 className="font-bold">Webdaddy</h2>
               <p className="text-sm text-gray-400">22 Sin Ming Ln, #06-76 Midview City,<br/>Singapore 573969</p>
-              <a href="https://goo.gl/maps/YourActualGoogleMapsLink" target="_blank" rel="noopener noreferrer" className="text-blue-400 text-sm">Directions</a>
+              <a href="https://www.google.com/maps/place/Webdaddy/@1.358606,103.833566,1088m/data=!3m1!1e3!4m14!1m7!3m6!1s0x31da17314381ac87:0x17f880b5ad6f542e!2sWebdaddy!8m2!3d1.358606!4d103.833566!16s%2Fg%2F11wc11b3t6!3m5!1s0x31da17314381ac87:0x17f880b5ad6f542e!8m2!3d1.358606!4d103.833566!16s%2Fg%2F11wc11b3t6!5m1!1e2?hl=en&entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="text-blue-400 text-sm">Directions</a>
             </div>
             <div className="flex-grow">
               <iframe
@@ -29,7 +31,7 @@ const Contact = () => {
                 className="w-full h-full"
               ></iframe>
             </div>
-            <a href="https://goo.gl/maps/YourActualGoogleMapsLink" target="_blank" rel="noopener noreferrer" className="block p-2 text-center text-blue-400 text-sm bg-gray-800">View larger map</a>
+            <a href="https://www.google.com/maps/place/Webdaddy/@1.358606,103.833566,1088m/data=!3m1!1e3!4m14!1m7!3m6!1s0x31da17314381ac87:0x17f880b5ad6f542e!2sWebdaddy!8m2!3d1.358606!4d103.833566!16s%2Fg%2F11wc11b3t6!3m5!1s0x31da17314381ac87:0x17f880b5ad6f542e!8m2!3d1.358606!4d103.833566!16s%2Fg%2F11wc11b3t6!5m1!1e2?hl=en&entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="block p-2 text-center text-blue-400 text-sm bg-gray-800">View larger map</a>
           </div>
 
           <div className="md:w-1/3 p-8 flex flex-col justify-center items-center">
@@ -67,6 +69,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
+        
       </div>
     </div>
   );

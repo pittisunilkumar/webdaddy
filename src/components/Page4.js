@@ -2,7 +2,7 @@ import React from 'react';
 
 const Page4 = () => {
   return (
-    <div id="page4" className="flex-none w-screen lg:w-[120vw] h-screen bg-white relative z-10 overflow-visible lg:-ml-[30vw]">
+    <div id="page4" className="flex-none w-screen lg:w-[100vw] h-screen bg-white relative z-10 overflow-visible lg:-ml-[30vw]">
       <div className="ripple-buttons hidden lg:block absolute w-96 h-96 top-1/3 left-[15%] z-0">
         <button></button>
         <button></button>
@@ -20,8 +20,8 @@ const Page4 = () => {
         </div>
 
         <div className="md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:flex md:items-center md:w-full">
-          <h2 className="text-6xl md:text-8xl md:mr-8 text-stroke text-center md:text-left fontmycustom">WE</h2>
-          <p className="text-base md:text-lg text-gray-600 md:flex-1 md:pr-8">
+          <h2 className="text-6xl md:text-8xl md:mr-8 text-stroke text-center md:text-left fontmycustom" >WE</h2>
+          <p className="text-base md:text-lg text-gray-600 md:flex-1 md:pr-8" >
             "We believe branding, design, development, content and visuals should be aligned and combined with the latest technological advancements for business creation."
           </p>
         </div>
@@ -36,6 +36,9 @@ const Page4 = () => {
         </div>
       </div>
 
+
+      
+
       <div className="hidden lg:flex flex-col items-center justify-center h-full w-full max-w-7xl mx-auto px-8">
         <div className="absolute top-16 left-[25%] right-8 flex items-start">
           <h1 className="text-9xl xl:text-10xl fontmycustom text-gray-800 mr-8">WHO</h1>
@@ -46,7 +49,11 @@ const Page4 = () => {
 
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center w-full">
           <div className="flex-1"></div>
-          <h2 className="text-9xl xl:text-10xl text-stroke mr-8 fontmycustom">WE</h2>
+          <h2 className="text-9xl xl:text-10xl text-stroke mr-8 fontmycustom"style={{
+              color: "transparent",
+              WebkitTextStroke: "1px black", 
+              textStroke: "1px black", 
+            }}>WE</h2>
           <p className="flex-1 text-gray-600 text-lg pr-16">
             "We believe branding, design, development, content and visuals should be aligned and combined with the latest technological advancements for business creation."
           </p>
@@ -59,6 +66,11 @@ const Page4 = () => {
           <h2 className="text-9xl xl:text-10xl fontmycustom text-gray-800 pl-8">ARE</h2>
         </div>
       </div>
+
+
+
+
+
     </div>
   );
 };

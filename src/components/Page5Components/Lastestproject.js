@@ -22,8 +22,6 @@ const LatestProjects = () => {
     { number: "05", type: "Educational Platform", title: "LearnQuest - Online Courses", image: portfolioImage5 },
   ];
 
- 
-
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
     document.body.style.overflow = isModalOpen ? '' : 'hidden';
