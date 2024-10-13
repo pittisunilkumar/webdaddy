@@ -20,6 +20,8 @@ function App() {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isInServicesSection, setIsInServicesSection] = useState(false);
   const [cursorOverRightSide, setCursorOverRightSide] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchStartY, setTouchStartY] = useState(null);
 
   useEffect(() => {
     const updateScrollLimits = () => {
@@ -228,6 +230,61 @@ function App() {
     };
   }, [scrollPosition, maxScroll, scrollMultiplier, isInServicesSection, cursorOverRightSide]);
 
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      setTouchStartX(e.touches[0].clientX);
+      setTouchStartY(e.touches[0].clientY);
+    };
+
+    const handleTouchMove = (e) => {
+      if (touchStartX === null || touchStartY === null) {
+        return;
+      }
+
+      const touchEndX = e.touches[0].clientX;
+      const touchEndY = e.touches[0].clientY;
+      const deltaX = touchStartX - touchEndX;
+      const deltaY = touchStartY - touchEndY;
+
+      // Determine if the user is scrolling horizontally or vertically
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Horizontal scrolling
+        e.preventDefault();
+        smoothScroll(deltaX);
+      } else {
+        // Vertical scrolling
+        if (scrollPosition >= maxScroll - 10 && page5Ref.current) {
+          const newScrollTop = page5Ref.current.scrollTop + deltaY;
+          if (newScrollTop >= 0 && newScrollTop <= page5Ref.current.scrollHeight - page5Ref.current.clientHeight) {
+            page5Ref.current.scrollTop = newScrollTop;
+          }
+        }
+      }
+
+      setTouchStartX(touchEndX);
+      setTouchStartY(touchEndY);
+    };
+
+    const handleTouchEnd = () => {
+      setTouchStartX(null);
+      setTouchStartY(null);
+    };
+
+    if (containerRef.current) {
+      containerRef.current.addEventListener('touchstart', handleTouchStart, { passive: false });
+      containerRef.current.addEventListener('touchmove', handleTouchMove, { passive: false });
+      containerRef.current.addEventListener('touchend', handleTouchEnd);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener('touchstart', handleTouchStart);
+        containerRef.current.removeEventListener('touchmove', handleTouchMove);
+        containerRef.current.removeEventListener('touchend', handleTouchEnd);
+      }
+    };
+  }, [scrollPosition, maxScroll, touchStartX, touchStartY]);
+
   return (
     <Router>
       <div className="font-sans overflow-hidden flex h-full bg-[#f7f7f7]">
@@ -255,8 +312,6 @@ function App() {
       </div>
     </Router>
   );
-
-  
 }
 
 export default App;
