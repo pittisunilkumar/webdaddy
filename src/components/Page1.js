@@ -34,7 +34,7 @@ const Page1 = () => {
                   CREATION
                 </h1>
 
-                <h1 className="blend text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-abusinees fontmycustom opacity-0 transform translate-y-full animate-slide-up-3">
+                <h1 className="blend text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-businees fontmycustom opacity-0 transform translate-y-full animate-slide-up-3">
                   AGENCY
                 </h1>
 

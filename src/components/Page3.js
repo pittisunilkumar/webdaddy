@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import car from '../assets/formulasCarimg.svg';
-import { color } from 'framer-motion';
 
 const Page3 = () => {
   const pageRef = useRef(null);
@@ -50,6 +49,7 @@ const Page3 = () => {
       
       <div className="container mx-auto px-4 py-8 lg:max-w-[90%] xl:max-w-[80%]">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-center">
+          
           <div className="text-center lg:text-left animate-on-scroll">
             <h1 className="text-4xl lg:text-[5.5vw] text-[#e2dcc8] fontmycustom mb-4 leading-tight">
               IN DIGITAL<br/>
@@ -71,7 +71,7 @@ const Page3 = () => {
             <img 
               src={car}
               alt="Formula 1 Car" 
-              className="w-full max-w-md lg:max-w-lg mx-auto mt-5"
+              className="w-full max-w-3xl lg:max-w-6xl mx-auto mt-5" // Increased max-width here
             />
           </div>
           
@@ -86,6 +86,8 @@ const Page3 = () => {
               Ready to take on any challenges that come your way!
             </p>
           </div>
+
+
         </div>
       </div>
     </div>

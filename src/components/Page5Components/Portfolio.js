@@ -113,10 +113,10 @@ const Portfolio = () => {
               className={`flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 portfoliopage-project-container ${index % 2 === 0 ? 'portfoliopage-project-container-one' : 'portfoliopage-project-container-two'}`}
               onClick={() => window.open(project.url, "_blank")}
             >
-              <div className={`w-full md:w-1/2 portfoliopage-project-text-container text-[#e2dcc8] flex flex-col ${index % 2 === 0 ? 'items-start md:order-1' : 'items-end md:order-2'}`}>
+              <div className={`w-full md:w-1/2 portfoliopage-project-text-container text-[#e2dcc8] flex flex-col items-center text-center md:items-start md:text-left ${index % 2 === 0 ? 'md:order-1' : 'md:order-2 md:items-end md:text-right'}`}>
                 <h2 className="text-4xl font-bold mb-4">{project.name}</h2>
                 <p className="text-xl mb-4">{project.description}</p>
-                <img src={arrowimage} alt="arrow" className={`w-8 h-8 ${index % 2 !== 0 ? 'transform rotate-180' : ''}`} />
+                <img src={arrowimage} alt="arrow" className={`w-8 h-8 ${index % 2 !== 0 ? 'md:transform md:rotate-180' : ''}`} />
               </div>
               <div className={`w-full md:w-1/2 portfoliopage-project-image-container ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
                 <img src={project.imageSrc} alt={project.name} className="w-full rounded-lg shadow-lg"/>

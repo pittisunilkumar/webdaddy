@@ -11,8 +11,8 @@ const LatestProjects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const formRef = useRef(null);
-  const headingRef = useRef(null);
-  const strokeRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+  const componentRef = useRef(null);
 
   const projects = [
     { number: "01", type: "Saas Landing Page", title: "Taskio - Task Management", image: portfolioImage1 },
@@ -37,15 +37,94 @@ const LatestProjects = () => {
     }, 2000);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+        } else {
+          setAnimate(false);
+        }
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the component is visible
+      }
+    );
+
+    if (componentRef.current) {
+      observer.observe(componentRef.current);
+    }
+
+    return () => {
+      if (componentRef.current) {
+        observer.unobserve(componentRef.current);
+      }
+    };
+  }, []);
+
+  const slideInLeft = `
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  `;
+
+  const slideInRight = `
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  `;
+
+  const fadeInUp = `
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  `;
+
   return (
-    <div className="bg-[#282828] text-[#e2dcc8] flex flex-col items-center justify-start w-full min-h-screen py-12 mt-[5%] font-montserrat">
+    <div ref={componentRef} className="bg-[#282828] text-[#e2dcc8] flex flex-col items-center justify-start w-full min-h-screen py-12 mt-[5%] font-montserrat">
+      <style>
+        {slideInLeft}
+        {slideInRight}
+        {fadeInUp}
+      </style>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-center items-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-12 pt-24">
-          <h1 ref={headingRef} className="bg-abusinees fontmycustom px-2 sm:px-5">LATEST</h1>
-          <h1 ref={strokeRef} className="bg-abusinees fontmycustom text-stroke px-2 sm:px-5 stroke-[#e2dcc8] stroke-2">PROJECTS</h1>
+        
+        <div className="fontmycustom flex flex-col sm:flex-row justify-center items-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl pb-12 pt-5">
+          <h1 
+            className={`px-2 sm:px-5 transition-all duration-1000 ${animate ? 'animate-[slideInLeft_1s_forwards]' : 'opacity-0 -translate-x-full'}`}
+          >
+            LATEST
+          </h1>
+          <h1 
+            className={`px-2 sm:px-5 text-transparent transition-all duration-1000 ${animate ? 'animate-[slideInRight_1s_forwards]' : 'opacity-0 translate-x-full'}`}
+            style={{ WebkitTextStroke: '1px #e2dcc8' }}
+          >
+            PROJECTS
+          </h1>
         </div>
 
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed text-center max-w-4xl mx-auto px-4 sm:px-5 mb-12 sm:mb-20">
+        <p className={`text-base sm:text-lg md:text-xl lg:text-2xl font-normal leading-relaxed text-center max-w-4xl mx-auto px-4 sm:px-5 mb-12 sm:mb-20 transition-all duration-1000 ${animate ? 'animate-[fadeInUp_1s_forwards_0.5s]' : 'opacity-0 translate-y-10'}`}>
           These projects are our relentless pursuit of the latest design trends
           in web development. We push the limits, staying agile where others
           hesitate.
@@ -53,19 +132,22 @@ const LatestProjects = () => {
 
         <button 
           onClick={handleModalToggle}
-          className="border-2 sm:border-4 border-[#e2dcc8] bg-transparent text-[#e2dcc8] py-2 sm:py-4 px-4 sm:px-8 text-sm sm:text-base md:text-lg lg:text-2xl font-montserrat cursor-pointer rounded-md mx-auto block mt-8 sm:mt-20 mb-12 sm:mb-20 transition-colors duration-300 hover:bg-[#e2dcc8] hover:text-[#282828]"
+          className={`border-2 sm:border-4 border-[#e2dcc8] bg-transparent text-[#e2dcc8] py-2 sm:py-4 px-4 sm:px-8 text-sm sm:text-base md:text-lg lg:text-2xl font-montserrat cursor-pointer rounded-md mx-auto block mt-8 sm:mt-20 mb-12 sm:mb-20 transition-all duration-1000 hover:bg-[#e2dcc8] hover:text-[#282828] ${animate ? 'animate-[fadeInUp_1s_forwards_0.7s]' : 'opacity-0 translate-y-10'}`}
         >
           If these designs speak to you, let's talk about making them yours.
         </button>
 
         <div className="space-y-12 sm:space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-center mt-8 sm:mt-20 pb-8 sm:pb-24 w-full">
+            <div key={index} className={`project-container group relative flex flex-col sm:flex-row items-start sm:items-center justify-center mt-8 sm:mt-20 pb-8 sm:pb-24 w-full transition-all duration-1000 ${animate ? `animate-[fadeInUp_1s_forwards_${0.9 + index * 0.2}s]` : 'opacity-0 translate-y-10'}`}>
               <div className="flex items-start w-full sm:w-auto z-10">
-                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mr-4 sm:mr-16 text-transparent stroke-[#e2dcc8] stroke-1 sm:stroke-2 transition-colors duration-300 group-hover:text-[#26d3b4] group-hover:stroke-0">
+                <h1 
+                  className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mr-4 sm:mr-16 text-transparent transition-all duration-1000 group-hover:text-[#26d3b4] ${animate ? `animate-[slideInLeft_1s_forwards_${1.1 + index * 0.2}s]` : 'opacity-0 -translate-x-full'}`}
+                  style={{ WebkitTextStroke: '1px #e2dcc8' }}
+                >
                   {project.number}/
                 </h1>
-                <div className="flex-1">
+                <div className={`flex-1 transition-all duration-1000 ${animate ? `animate-[slideInRight_1s_forwards_${1.1 + index * 0.2}s]` : 'opacity-0 translate-x-full'}`}>
                   <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-1 sm:mb-2">{project.type}</p>
                   <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">{project.title}</h3>
                 </div>
@@ -122,3 +204,7 @@ const LatestProjects = () => {
 };
 
 export default LatestProjects;
+
+
+
+

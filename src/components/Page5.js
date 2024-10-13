@@ -8,6 +8,7 @@ import Blog from './Page5Components/Blog';
 import Contact from './Page5Components/Contact';
 import Addpage from './Page5Components/Addpage';
 import Transition from './Page5Components/Transition';
+import Footer from './Page5Components/Footer';
 
 const Page5 = forwardRef((props, ref) => {
   
@@ -26,6 +27,7 @@ const Page5 = forwardRef((props, ref) => {
         <Transition/>
         <Blog id="blog-section" />
         <Contact id="contact-section" />
+        <Footer/>
       </div>
     </div>
   );
